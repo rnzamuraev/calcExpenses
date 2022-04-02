@@ -11,13 +11,16 @@ let appData = {
 };
 console.log(appData);
 
-// if (
-//   typeof money != null &&
-//   typeof time != null &&
-//   money != "" &&
-//   time != "" &&
-//   time.length == 10
-// )
+if (
+  typeof appData.budget != null &&
+  typeof appData.timeData != null &&
+  appData.budget != "" &&
+  appData.timeData != ""
+) {
+  console.log("все поля заполнены без ошибок");
+} else {
+  console.log("что-то пошло не так");
+}
 
 for (let i = 0; i < 2; i++) {
   let a = prompt("Введите обязательную статью расходов в этом месяце", ""),
@@ -43,3 +46,13 @@ appData.moneyPerDay = appData.budget / 30;
 
 // console.log(expensesSum);
 alert("Ежедневный бюджуе: " + appData.moneyPerDay);
+
+if (appData.moneyPerDay <= 500) {
+  console.log("минимальный уровень достатка");
+} else if (appData.moneyPerDay > 500 && appData.moneyPerDay <= 2000) {
+  console.log("средний уровень достатка");
+} else if (appData.moneyPerDay > 2000) {
+  console.log("высокий уровень достатка");
+} else {
+  console.log("Что-то пошло не так");
+}
