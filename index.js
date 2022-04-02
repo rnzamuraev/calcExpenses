@@ -1,4 +1,4 @@
-let money = prompt("Ваш бюджет на месяц?", ""),
+let money = +prompt("Ваш бюджет на месяц?", ""),
   time = prompt("Введите дату в формате", "YYYY-MM-DD");
 
 let appData = {
@@ -11,22 +11,35 @@ let appData = {
 };
 console.log(appData);
 
-let question1 = prompt(
-    "Введите обязательную статью расходов в этом месяце",
-    ""
-  ),
-  question2 = prompt("Во сколько обойдется?", ""),
-  question3 = prompt("Введите обязательную статью расходов в этом месяце", ""),
-  question4 = prompt("Во сколько обойдется?", "");
+// if (
+//   typeof money != null &&
+//   typeof time != null &&
+//   money != "" &&
+//   time != "" &&
+//   time.length == 10
+// )
 
-appData.expenses.question1 = question2;
-console.log(appData.expenses.question1);
-appData.expenses.question3 = question4;
-console.log(appData.expenses.question3);
+for (let i = 0; i < 2; i++) {
+  let a = prompt("Введите обязательную статью расходов в этом месяце", ""),
+    b = prompt("Во сколько обойдется?", "");
 
-let a = appData.expenses.question1;
-let b = appData.expenses.question3;
+  if (
+    typeof a === "string" &&
+    typeof a != null &&
+    typeof b != null &&
+    a != "" &&
+    b != "" &&
+    a.length < 30
+  ) {
+    console.log("done");
+    appData.expenses[a] = b;
+    console.log(appData.expenses);
+  } else {
+    console.log("Не верно заполнены поля");
+  }
+}
 
-let expensesSum = a + b;
-console.log(expensesSum);
-// alert((appData.budget - expensesSum) / 30);
+appData.moneyPerDay = appData.budget / 30;
+
+// console.log(expensesSum);
+alert("Ежедневный бюджуе: " + appData.moneyPerDay);
