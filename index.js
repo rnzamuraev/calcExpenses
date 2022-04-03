@@ -30,26 +30,29 @@ let appData = {
 };
 console.log(appData);
 
-for (let i = 0; i < 2; i++) {
-  let a = prompt("Введите обязательную статью расходов в этом месяце", ""),
-    b = +prompt("Во сколько обойдется?", "");
+function choiceExpenses() {
+  for (let i = 0; i < 2; i++) {
+    let a = prompt("Введите обязательную статью расходов в этом месяце", ""),
+      b = +prompt("Во сколько обойдется?", "");
 
-  if (
-    typeof a === "string" &&
-    typeof a != null &&
-    typeof b != null &&
-    a != "" &&
-    b != "" &&
-    a.length < 30
-  ) {
-    console.log("Готово");
-    appData.expenses[a] = b;
-    console.log(appData.expenses);
-  } else {
-    console.log("Не верно заполнены поля");
-    i--;
+    if (
+      typeof a === "string" &&
+      typeof a != null &&
+      typeof b != null &&
+      a != "" &&
+      b != "" &&
+      a.length < 30
+    ) {
+      console.log("Готово");
+      appData.expenses[a] = b;
+      console.log(appData.expenses);
+    } else {
+      console.log("Не верно заполнены поля");
+      i--;
+    }
   }
 }
+choiceExpenses();
 
 // Цикл while
 
