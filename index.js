@@ -37,22 +37,46 @@ function choiceExpenses() {
 
     if (
       typeof a === "string" &&
+      isNaN(a) &&
+      !isNaN(b) &&
       typeof a != null &&
       typeof b != null &&
       a != "" &&
       b != "" &&
       a.length < 30
     ) {
-      console.log("Готово");
       appData.expenses[a] = b;
       console.log(appData.expenses);
     } else {
-      console.log("Не верно заполнены поля");
+      alert("Поле не верно заполнено");
       i--;
     }
   }
 }
 choiceExpenses();
+
+function chooseOptExpenses() {
+  for (let i = 1; i <= 3; i++) {
+    let questionOptExpenses = +prompt(
+      "Введите статью необязательных расходов?",
+      ""
+    );
+    console.log(questionOptExpenses);
+
+    if (
+      typeof questionOptExpenses != null &&
+      !isNaN(questionOptExpenses) &&
+      questionOptExpenses != ""
+    ) {
+      appData.optionalExpenses[i] = questionOptExpenses;
+      console.log(appData.optionalExpenses);
+    } else {
+      alert("Не верно заполнено поле");
+      i--;
+    }
+  }
+}
+chooseOptExpenses();
 
 // Цикл while
 
@@ -101,19 +125,22 @@ choiceExpenses();
 //   i++;
 // } while (i < 2);
 
-appData.moneyPerDay = appData.budget / 30;
+function detectDayBudget() {
+  appData.moneyPerDay = appData.budget / 30;
+  alert("Ежедневный бюджет: " + appData.moneyPerDay);
+}
+detectDayBudget();
 
-// console.log(expensesSum);
-alert("Ежедневный бюджуе: " + appData.moneyPerDay);
-
-if (appData.moneyPerDay <= 500) {
-  console.log("минимальный уровень достатка");
-} else if (appData.moneyPerDay > 500 && appData.moneyPerDay <= 2000) {
-  console.log("средний уровень достатка");
-} else if (appData.moneyPerDay > 2000) {
-  console.log("высокий уровень достатка");
-} else {
-  console.log("Что-то пошло не так");
+function detectLevel() {
+  if (appData.moneyPerDay <= 500) {
+    console.log("минимальный уровень достатка");
+  } else if (appData.moneyPerDay > 500 && appData.moneyPerDay <= 2000) {
+    console.log("средний уровень достатка");
+  } else if (appData.moneyPerDay > 2000) {
+    console.log("высокий уровень достатка");
+  } else {
+    console.log("Что-то пошло не так");
+  }
 }
 
 function checkSavings() {
