@@ -1,7 +1,24 @@
-"use strict";
+// "use strict";
 
-let money = +prompt("Ваш бюджет на месяц?", ""),
+let money, time;
+
+function start() {
+  money = +prompt("Ваш бюджет на месяц?", "");
   time = prompt("Введите дату в формате", "YYYY-MM-DD");
+
+  while (
+    isNaN(money) ||
+    money == null ||
+    time == null ||
+    money == "" ||
+    time == "" ||
+    time.length != 10
+  ) {
+    alert("Не верно заполнены поля");
+    start();
+  }
+}
+start();
 
 let appData = {
   budget: money,
@@ -13,20 +30,9 @@ let appData = {
 };
 console.log(appData);
 
-if (
-  typeof appData.budget != null &&
-  typeof appData.timeData != null &&
-  appData.budget != "" &&
-  appData.timeData != ""
-) {
-  console.log("все поля заполнены без ошибок");
-} else {
-  console.log("что-то пошло не так");
-}
-
 for (let i = 0; i < 2; i++) {
   let a = prompt("Введите обязательную статью расходов в этом месяце", ""),
-    b = prompt("Во сколько обойдется?", "");
+    b = +prompt("Во сколько обойдется?", "");
 
   if (
     typeof a === "string" &&
