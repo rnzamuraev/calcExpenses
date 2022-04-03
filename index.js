@@ -115,3 +115,14 @@ if (appData.moneyPerDay <= 500) {
 } else {
   console.log("Что-то пошло не так");
 }
+
+function checkSavings() {
+  if (appData.savings == true) {
+    let save = +prompt("Какова сумма накопления?", ""),
+      percent = +prompt("Под какой процент?", "");
+
+    appData.monthIncome = (save / 100 / 12) * percent;
+    alert("Ваш доход в месяц с депозита составит: " + appData.monthIncome);
+  }
+}
+checkSavings();
