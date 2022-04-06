@@ -1,6 +1,4 @@
 // "use strict";
-const btnStart = document.getElementById("start");
-
 
 let money, time;
 
