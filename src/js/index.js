@@ -28,8 +28,8 @@ const inputYearValue = document.querySelector(".year-value"),
 let money, time;
 
 btnStart.addEventListener("click", function () {
-  money = +prompt("Ваш бюджет на месяц?", "");
   time = prompt("Введите дату в формате", "YYYY-MM-DD");
+  money = +prompt("Ваш бюджет на месяц?", "");
 
   while (
     isNaN(money) ||
@@ -40,8 +40,13 @@ btnStart.addEventListener("click", function () {
     time.length != 10
   ) {
     alert("Не верно заполнены поля");
-    start();
+    time = prompt("Введите дату в формате", "YYYY-MM-DD");
+    money = +prompt("Ваш бюджет на месяц?", "");
   }
+
+  appData.budget = money;
+  appData.timeData = time;
+  budgetValue.textContent = money;
 });
 
 let appData = {
@@ -142,12 +147,6 @@ let appData = {
   },
 };
 console.log(appData);
-
-// appData.choiceExpenses();
-// appData.chooseOptExpenses();
-// appData.detectDayBudget();
-// appData.checkSavings();
-// appData.chooseIncome();
 
 for (let key in appData) {
   console.log("Наша программа включает в себя данные: " + key + ": " + appData);
