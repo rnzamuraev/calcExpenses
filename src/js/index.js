@@ -1,8 +1,33 @@
 // "use strict";
 
+const btnStart = document.getElementById("start");
+
+const budgetValue = document.querySelector(".budget-value"),
+  daybudgetValue = document.querySelector(".daybudget-value"),
+  levelValue = document.querySelector(".level-value"),
+  expensesValue = document.querySelector(".expenses-value"),
+  optionalexpensesValue = document.querySelector(".optionalexpenses-value"),
+  incomeValue = document.querySelector(".income-value"),
+  monthsavingsValue = document.querySelector(".monthsavings-value"),
+  yearsavingsValue = document.querySelector(".yearsavings-value");
+
+const expensesItem = document.getElementsByClassName("expenses-item"),
+  optionalexpensesItem = document.querySelectorAll(".optionalexpenses-item"),
+  expensesItemBtn = document.getElementsByTagName("button")[0],
+  optionalexpensesBtn = document.getElementsByTagName("button")[1],
+  countBudgetBtn = document.getElementsByTagName("button")[2];
+
+const inputYearValue = document.querySelector(".year-value"),
+  inputMonthValue = document.querySelector(".month-value"),
+  inputDayValue = document.querySelector(".day-value"),
+  inputSum = document.querySelector("#sum"),
+  inputPercent = document.querySelector("#percent"),
+  inputIncome = document.querySelector("#income"),
+  inputSavings = document.querySelector("#savings");
+
 let money, time;
 
-function start() {
+btnStart.addEventListener("click", function () {
   money = +prompt("Ваш бюджет на месяц?", "");
   time = prompt("Введите дату в формате", "YYYY-MM-DD");
 
@@ -17,8 +42,7 @@ function start() {
     alert("Не верно заполнены поля");
     start();
   }
-}
-start();
+});
 
 let appData = {
   budget: money,
