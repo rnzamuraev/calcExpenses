@@ -94,7 +94,6 @@ expensesItemBtn.addEventListener("click", () => {
 optionalExpensesBtn.addEventListener("click", () => {
   for (let i = 0; i < optionalExpensesItem.length; i++) {
     let questionOptExpenses = optionalExpensesItem[i].value;
-    let sum = 0;
     if (
       !isNaN(questionOptExpenses) &&
       typeof questionOptExpenses != null &&
@@ -102,12 +101,9 @@ optionalExpensesBtn.addEventListener("click", () => {
     ) {
       appData.optionalExpenses[i] = questionOptExpenses;
       optionalExpensesValue.textContent += +appData.optionalExpenses[i] + ", ";
-      sum += +appData.optionalExpenses[i].textContent;
-      console.log(+sum);
     } else {
       questionOptExpenses = optionalExpensesItem[i].value;
     }
-
     countBudgetBtn.disabled = false;
   }
 });
@@ -190,54 +186,3 @@ let appData = {
   income: [],
   savings: false,
 };
-
-for (let key in appData) {
-  console.log("Наша программа включает в себя данные: " + key + ": " + appData);
-}
-
-// Цикл while
-
-// let i = 0;
-// while (i < 2) {
-//   let a = prompt("Введите обязательную статью расходов в этом месяце", ""),
-//     b = prompt("Во сколько обойдется?", "");
-
-//   if (
-//     typeof a === "string" &&
-//     typeof a != null &&
-//     typeof b != null &&
-//     a != "" &&
-//     b != "" &&
-//     a.length < 30
-//   ) {
-//     console.log("Готово");
-//     appData.expenses[a] = b;
-//     console.log(appData.expenses);
-//   } else {
-//     console.log("Не верно заполнены поля");
-//     i--;
-//   }
-//   i++;
-// }
-
-// Цикл do while
-
-// let i = 0;
-// do {
-//   let a = prompt("Введите обязательную статью расходов в этом месяце", ""),
-//     b = prompt("Во сколько обойдется?", "");
-
-//   if (
-//     typeof a === "string" &&
-//     typeof a != null &&
-//     typeof b != null &&
-//     a != "" &&
-//     b != "" &&
-//     a.length < 30
-//   ) {
-//     console.log("Готово");
-//     appData.expenses[a] = b;
-//     i--;
-//   }
-//   i++;
-// } while (i < 2);
