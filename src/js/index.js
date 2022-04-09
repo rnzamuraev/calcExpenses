@@ -30,6 +30,8 @@ optionalExpensesBtn.disabled = true;
 countBudgetBtn.disabled = true;
 inputIncome.disabled = true;
 inputSavings.disabled = true;
+inputSum.disabled = true;
+inputPercent.disabled = true;
 
 let money, time;
 
@@ -77,8 +79,9 @@ expensesItemBtn.addEventListener("click", () => {
       b != "" &&
       a.length < 30
     ) {
-      appData.expenses[a] = b;
+      appData.expenses[a] = +b;
       sum += +b;
+      console.log(sum);
     } else {
       i--;
     }
@@ -91,7 +94,7 @@ expensesItemBtn.addEventListener("click", () => {
 optionalExpensesBtn.addEventListener("click", () => {
   for (let i = 0; i < optionalExpensesItem.length; i++) {
     let questionOptExpenses = optionalExpensesItem[i].value;
-
+    let sum = 0;
     if (
       !isNaN(questionOptExpenses) &&
       typeof questionOptExpenses != null &&
@@ -99,6 +102,8 @@ optionalExpensesBtn.addEventListener("click", () => {
     ) {
       appData.optionalExpenses[i] = questionOptExpenses;
       optionalExpensesValue.textContent += +appData.optionalExpenses[i] + ", ";
+      sum += +appData.optionalExpenses[i].textContent;
+      console.log(+sum);
     } else {
       questionOptExpenses = optionalExpensesItem[i].value;
     }
@@ -109,7 +114,7 @@ optionalExpensesBtn.addEventListener("click", () => {
 
 countBudgetBtn.addEventListener("click", () => {
   if (appData.budget != undefined) {
-    appData.moneyPerDay = appData.budget / 30;
+    appData.moneyPerDay = (appData.budget - expensesValue.textContent) / 30;
     dayBudgetValue.textContent = appData.moneyPerDay.toFixed(2);
 
     if (appData.moneyPerDay <= 500) {
@@ -140,8 +145,12 @@ inputIncome.addEventListener("input", () => {
 inputSavings.addEventListener("click", () => {
   if (appData.savings == true) {
     appData.savings = false;
+    inputSum.disabled = true;
+    inputPercent.disabled = true;
   } else {
     appData.savings = true;
+    inputSum.disabled = false;
+    inputPercent.disabled = false;
   }
 });
 
@@ -163,8 +172,6 @@ inputPercent.addEventListener("input", () => {
   if (appData.savings == true) {
     let sum = +inputSum.value,
       percent = +inputPercent.value;
-
-    // appData.income.push
 
     if (isNaN(inputSum || isNaN(inputPercent))) {
       appData.incomeMonth = (sum / 100 / 12) * percent;
